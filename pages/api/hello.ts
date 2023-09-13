@@ -1,7 +1,18 @@
-export async function GET(request: Request) {
-    return new Response('Hello World!');
+
+// pages/api/hello.ts
+
+// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import type { NextApiRequest, NextApiResponse } from 'next'
+
+type Data = {
+  name: string
+  timestamp: Date
 }
 
-export async function POST(request: Request) {
-    return new Response('pOST');
+export default function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<Data>
+) {
+  const timestamp = new Date()
+  res.status(200).json({ name: 'John Doe', timestamp })
 }
